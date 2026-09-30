@@ -3,23 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IT Immo GmbH | Immobilienentwicklung</title>
+    <title>IT Immo GmbH | Premium Immobilien</title>
+    
+    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Load Premium Fonts: Playfair Display (Serif) for headings, Inter for body -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['"Inter"', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
                         serif: ['"Playfair Display"', 'serif'],
                     },
                     colors: {
                         brand: {
-                            navy: '#0f172a',    /* Deep slate/navy for text and dark backgrounds */
-                            slate: '#475569',   /* Muted text */
-                            light: '#fafafa',   /* Sophisticated off-white */
-                            border: '#e2e8f0',  /* Light borders */
+                            dark: '#111827',
+                            muted: '#374151',
+                            light: '#f9fafb',
+                            gold: '#b89855'
                         }
                     }
                 }
@@ -27,176 +34,125 @@
         }
     </script>
     <style>
-        body {
-            background-color: #fafafa;
-        }
-        .modal-active {
+        /* Ensuring modals don't cause page shift when scrollbar disappears */
+        body.modal-open {
             overflow: hidden;
-        }
-        .fade-in {
-            animation: fadeIn 0.3s ease-out forwards;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body class="text-brand-navy antialiased font-sans">
+<body class="text-brand-dark bg-brand-light antialiased">
 
-    <header class="fixed w-full top-0 z-40 bg-white/90 backdrop-blur-md shadow-sm border-b border-gray-100 transition-all duration-300">
-        <div class="max-w-7xl mx-auto px-6 h-24 flex items-center justify-between">
-            <!-- Sleek Text Logo (No extra buttons) -->
-            <a href="#home" class="font-serif font-bold text-2xl tracking-wide text-brand-navy flex items-center gap-3">
-                <span class="w-10 h-10 flex items-center justify-center bg-brand-navy text-white text-sm font-sans tracking-widest">IT</span>
-                IMMO GmbH
+    <header class="fixed w-full top-0 z-50 bg-white/90 backdrop-blur-md shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#home" class="font-serif font-bold text-2xl tracking-wider text-brand-dark uppercase">
+                IT Immo GmbH
             </a>
-            
-            <!-- Navigation Links -->
-            <nav class="hidden md:flex gap-10 font-medium text-sm text-brand-slate uppercase tracking-widest">
-                <a href="#portfolio" class="hover:text-brand-navy transition-colors">Projekte</a>
-                <a href="#team" class="hover:text-brand-navy transition-colors">Team</a>
-                <a href="#contact" class="hover:text-brand-navy transition-colors">Kontakt</a>
+            <nav class="hidden md:flex gap-8 font-medium text-sm text-brand-muted tracking-wide uppercase">
+                <a href="#home" class="hover:text-brand-gold transition-colors">Home</a>
+                <a href="#projekte" class="hover:text-brand-gold transition-colors">Projekte</a>
+                <a href="#team" class="hover:text-brand-gold transition-colors">Team</a>
+                <a href="#kontakt" class="hover:text-brand-gold transition-colors">Kontakt</a>
             </nav>
-
-            <!-- Mobile Menu Button -->
-            <button class="md:hidden p-2 text-brand-slate">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
-            </button>
         </div>
     </header>
 
     <main>
-        <section id="home" class="relative pt-32 pb-20 md:pt-48 md:pb-32 flex items-center justify-center bg-brand-navy text-white overflow-hidden">
-            <!-- Subtle background pattern/gradient -->
-            <div class="absolute inset-0 bg-gradient-to-br from-slate-900 to-slate-800 opacity-95"></div>
+        <section id="home" class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+            <!-- Full-screen background image projecting the project -->
+            <img src="1 (2).jpg" alt="Kefermarkt Projekt Hero" class="absolute inset-0 w-full h-full object-cover">
             
-            <div class="relative z-10 max-w-5xl mx-auto px-6 text-center">
-                <h1 class="font-serif text-5xl md:text-7xl font-semibold tracking-tight mb-8 leading-tight">
+            <!-- Dark overlay for text legibility and premium feel -->
+            <div class="absolute inset-0 bg-black/50"></div>
+            
+            <!-- Centered Elegant Title -->
+            <div class="relative z-10 text-center px-6">
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-white tracking-widest uppercase mb-4 shadow-sm">
                     IT Immo GmbH
                 </h1>
-                <p class="font-sans text-lg md:text-xl text-slate-300 mb-12 font-light max-w-2xl mx-auto tracking-wide leading-relaxed">
-                    Hochwertige Immobilienentwicklung und zukunftsweisende Wohnkonzepte in Österreich. Absolute Verlässlichkeit von der Planung bis zur Übergabe.
+                <p class="text-white/90 text-sm md:text-base lg:text-lg tracking-[0.2em] uppercase font-light">
+                    Exzellenz in der Immobilienentwicklung
                 </p>
-                <div class="w-16 h-px bg-slate-500 mx-auto"></div>
+            </div>
+            
+            <!-- Scroll indicator -->
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+                <a href="#projekte" class="text-white/70 hover:text-white">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                </a>
             </div>
         </section>
 
-        <section class="bg-white border-b border-gray-100 py-12">
+        <section id="projekte" class="py-24 bg-brand-light">
             <div class="max-w-7xl mx-auto px-6">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-gray-100">
-                    <div class="py-4 md:py-0">
-                        <p class="text-4xl font-serif text-brand-navy mb-2">5+</p>
-                        <p class="text-xs uppercase tracking-widest text-brand-slate font-semibold">Erfolgreich Realisierte Projekte</p>
-                    </div>
-                    <div class="py-4 md:py-0">
-                        <p class="text-4xl font-serif text-brand-navy mb-2">100%</p>
-                        <p class="text-xs uppercase tracking-widest text-brand-slate font-semibold">Erfolgsquote & Auslastung</p>
-                    </div>
-                    <div class="py-4 md:py-0">
-                        <p class="text-4xl font-serif text-brand-navy mb-2">OÖ</p>
-                        <p class="text-xs uppercase tracking-widest text-brand-slate font-semibold">Fokus auf Oberösterreich</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="portfolio" class="py-24 bg-brand-light">
-            <div class="max-w-7xl mx-auto px-6">
-                <div class="mb-20 text-center">
-                    <h2 class="font-serif text-4xl md:text-5xl text-brand-navy mb-4">Erfolgreich Abgeschlossene Projekte</h2>
-                    <p class="text-brand-slate max-w-2xl mx-auto font-light">Ein Auszug unserer realisierten Wohnanlagen. Architektur, die sich in die Umgebung einfügt und modernen Wohnkomfort garantiert.</p>
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-dark mb-4">Realisierte Projekte</h2>
+                    <div class="w-16 h-1 bg-brand-gold mx-auto"></div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                     
-                    <!-- Kefermarkt -->
-                    <div class="group bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 border border-brand-border flex flex-col">
-                        <div class="relative h-64 overflow-hidden bg-gray-100">
-                            <img src="1 (2).jpg" alt="Projekt Kefermarkt" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                            <div class="absolute top-4 left-4 bg-brand-navy/90 backdrop-blur text-white text-[10px] font-medium px-3 py-1 uppercase tracking-widest">
-                                100% Verkauft • Fertiggestellt
-                            </div>
+                    <!-- Projekt: Kefermarkt -->
+                    <div class="bg-white rounded-sm shadow-md overflow-hidden border border-gray-100 flex flex-col">
+                        <div class="relative h-72">
+                            <img src="1 (2).jpg" alt="Kefermarkt" class="w-full h-full object-cover">
                         </div>
-                        <div class="p-8 flex flex-col flex-1">
-                            <h3 class="font-serif text-2xl text-brand-navy mb-4">Kefermarkt</h3>
-                            <ul class="text-sm text-brand-slate space-y-2 mb-6 font-light">
-                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> Baujahr: 2022</li>
-                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> 10 Wohneinheiten (Reihenhäuser)</li>
-                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> Wärmepumpe & Private Gärten</li>
-                            </ul>
+                        <div class="p-8 text-center flex-1 flex flex-col justify-center items-center">
+                            <h3 class="text-2xl font-serif font-bold text-brand-dark mb-3">Kefermarkt</h3>
+                            <span class="inline-block px-3 py-1 bg-gray-100 text-brand-muted text-xs font-semibold tracking-wider uppercase rounded-full">
+                                100% Verkauft • Fertiggestellt
+                            </span>
                         </div>
                     </div>
 
-                    <!-- Mitterkirchen -->
-                    <div class="group bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 border border-brand-border flex flex-col">
-                        <div class="relative h-64 overflow-hidden bg-gray-100">
-                            <img src="Mitterkirchen.jpg" alt="Projekt Mitterkirchen" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                            <div class="absolute top-4 left-4 bg-brand-navy/90 backdrop-blur text-white text-[10px] font-medium px-3 py-1 uppercase tracking-widest">
-                                100% Verkauft • Fertiggestellt
-                            </div>
+                    <!-- Projekt: Wels -->
+                    <div class="bg-white rounded-sm shadow-md overflow-hidden border border-gray-100 flex flex-col">
+                        <div class="relative h-72">
+                            <img src="Wels.jpg" alt="Wels" class="w-full h-full object-cover">
                         </div>
-                        <div class="p-8 flex flex-col flex-1">
-                            <h3 class="font-serif text-2xl text-brand-navy mb-4">Mitterkirchen</h3>
-                            <ul class="text-sm text-brand-slate space-y-2 mb-6 font-light">
-                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> Baujahr: 2021</li>
-                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> 14 Wohneinheiten</li>
-                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> Photovoltaik & Tiefgarage</li>
-                            </ul>
+                        <div class="p-8 text-center flex-1 flex flex-col justify-center items-center">
+                            <h3 class="text-2xl font-serif font-bold text-brand-dark mb-3">Wels</h3>
+                            <span class="inline-block px-3 py-1 bg-gray-100 text-brand-muted text-xs font-semibold tracking-wider uppercase rounded-full">
+                                100% Verkauft • Fertiggestellt
+                            </span>
                         </div>
                     </div>
 
-                    <!-- Pöstlingberg -->
-                    <div class="group bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 border border-brand-border flex flex-col">
-                        <div class="relative h-64 overflow-hidden bg-gray-100">
-                            <img src="Pöstlingbergjpg.jpg" alt="Projekt Pöstlingberg" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                            <div class="absolute top-4 left-4 bg-brand-navy/90 backdrop-blur text-white text-[10px] font-medium px-3 py-1 uppercase tracking-widest">
-                                100% Verkauft • Fertiggestellt
-                            </div>
+                    <!-- Projekt: Pöstlingberg -->
+                    <div class="bg-white rounded-sm shadow-md overflow-hidden border border-gray-100 flex flex-col">
+                        <div class="relative h-72">
+                            <img src="Pöstlingbergjpg.jpg" alt="Pöstlingberg" class="w-full h-full object-cover">
                         </div>
-                        <div class="p-8 flex flex-col flex-1">
-                            <h3 class="font-serif text-2xl text-brand-navy mb-4">Pöstlingberg</h3>
-                            <ul class="text-sm text-brand-slate space-y-2 mb-6 font-light">
-                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> Baujahr: 2023</li>
-                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> 6 Luxus-Apartments</li>
-                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> Smart Home & Panoramablick</li>
-                            </ul>
+                        <div class="p-8 text-center flex-1 flex flex-col justify-center items-center">
+                            <h3 class="text-2xl font-serif font-bold text-brand-dark mb-3">Pöstlingberg</h3>
+                            <span class="inline-block px-3 py-1 bg-gray-100 text-brand-muted text-xs font-semibold tracking-wider uppercase rounded-full">
+                                100% Verkauft • Fertiggestellt
+                            </span>
                         </div>
                     </div>
 
-                    <!-- Steyr -->
-                    <div class="group bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 border border-brand-border flex flex-col">
-                        <div class="relative h-64 overflow-hidden bg-gray-100">
-                            <img src="Steyr.jpg" alt="Projekt Steyr" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                            <div class="absolute top-4 left-4 bg-brand-navy/90 backdrop-blur text-white text-[10px] font-medium px-3 py-1 uppercase tracking-widest">
-                                100% Verkauft • Fertiggestellt
-                            </div>
+                    <!-- Projekt: Mitterkirchen -->
+                    <div class="bg-white rounded-sm shadow-md overflow-hidden border border-gray-100 flex flex-col">
+                        <div class="relative h-72">
+                            <img src="Mitterkirchen.jpg" alt="Mitterkirchen" class="w-full h-full object-cover">
                         </div>
-                        <div class="p-8 flex flex-col flex-1">
-                            <h3 class="font-serif text-2xl text-brand-navy mb-4">Steyr</h3>
-                            <ul class="text-sm text-brand-slate space-y-2 mb-6 font-light">
-                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> Baujahr: 2023</li>
-                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> 18 Wohneinheiten</li>
-                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> Energieeffiziente Bauweise</li>
-                            </ul>
+                        <div class="p-8 text-center flex-1 flex flex-col justify-center items-center">
+                            <h3 class="text-2xl font-serif font-bold text-brand-dark mb-3">Mitterkirchen</h3>
+                            <span class="inline-block px-3 py-1 bg-gray-100 text-brand-muted text-xs font-semibold tracking-wider uppercase rounded-full">
+                                100% Verkauft • Fertiggestellt
+                            </span>
                         </div>
                     </div>
 
-                    <!-- Wels -->
-                    <div class="group bg-white rounded-sm overflow-hidden shadow-sm hover:shadow-xl transition-shadow duration-300 border border-brand-border flex flex-col">
-                        <div class="relative h-64 overflow-hidden bg-gray-100">
-                            <img src="Wels.jpg" alt="Projekt Wels" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                            <div class="absolute top-4 left-4 bg-brand-navy/90 backdrop-blur text-white text-[10px] font-medium px-3 py-1 uppercase tracking-widest">
-                                100% Verkauft • Fertiggestellt
-                            </div>
+                    <!-- Projekt: Steyr -->
+                    <div class="bg-white rounded-sm shadow-md overflow-hidden border border-gray-100 flex flex-col md:col-span-2 lg:col-span-1">
+                        <div class="relative h-72">
+                            <img src="Steyr.jpg" alt="Steyr" class="w-full h-full object-cover">
                         </div>
-                        <div class="p-8 flex flex-col flex-1">
-                            <h3 class="font-serif text-2xl text-brand-navy mb-4">Wels</h3>
-                            <ul class="text-sm text-brand-slate space-y-2 mb-6 font-light">
-                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> Baujahr: 2022</li>
-                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> 24 Wohneinheiten</li>
-                                <li class="flex items-center gap-2"><span class="w-1.5 h-1.5 bg-slate-300 rounded-full"></span> Zentrale Lage & Dachterrassen</li>
-                            </ul>
+                        <div class="p-8 text-center flex-1 flex flex-col justify-center items-center">
+                            <h3 class="text-2xl font-serif font-bold text-brand-dark mb-3">Steyr</h3>
+                            <span class="inline-block px-3 py-1 bg-gray-100 text-brand-muted text-xs font-semibold tracking-wider uppercase rounded-full">
+                                100% Verkauft • Fertiggestellt
+                            </span>
                         </div>
                     </div>
 
@@ -204,59 +160,53 @@
             </div>
         </section>
 
-        <section id="team" class="py-24 bg-white border-t border-brand-border">
-            <div class="max-w-6xl mx-auto px-6 text-center">
-                <div class="mb-20">
-                    <h2 class="font-serif text-4xl md:text-5xl text-brand-navy mb-4">Unser Team</h2>
-                    <div class="w-12 h-px bg-brand-navy mx-auto"></div>
+        <section id="team" class="py-24 bg-white border-t border-gray-100">
+            <div class="max-w-7xl mx-auto px-6 text-center">
+                <div class="text-center mb-20">
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold text-brand-dark mb-4">Unser Team</h2>
+                    <div class="w-16 h-1 bg-brand-gold mx-auto"></div>
                 </div>
 
                 <!-- Geschäftsführung -->
                 <div class="mb-24">
-                    <h4 class="text-sm font-semibold text-brand-slate mb-12 uppercase tracking-widest">Geschäftsführung</h4>
+                    <h3 class="text-xl font-medium text-brand-muted uppercase tracking-widest mb-12">Geschäftsführung</h3>
                     <div class="flex flex-col md:flex-row justify-center gap-12 md:gap-24">
+                        
                         <!-- Ioan Singeorzan -->
-                        <div class="group flex flex-col items-center text-center">
-                            <div class="relative w-56 h-56 mb-6 overflow-hidden bg-gray-50">
-                                <img src="Ioan-Singeorzan.jpeg" alt="Ioan Singeorzan" class="w-full h-full object-cover object-top grayscale hover:grayscale-0 transition-all duration-500">
-                            </div>
-                            <h5 class="text-xl font-serif text-brand-navy">Ioan Singeorzan</h5>
-                            <p class="text-brand-slate font-light mt-1 tracking-wide text-sm">Geschäftsführer</p>
+                        <div class="flex flex-col items-center">
+                            <!-- Natively full color image, no filters -->
+                            <img src="Ioan-Singeorzan.jpeg" alt="Ioan Singeorzan" class="w-56 h-56 object-cover object-top rounded-full shadow-lg mb-6 border-4 border-white">
+                            <h4 class="text-2xl font-serif font-bold text-brand-dark">Ioan Singeorzan</h4>
+                            <p class="text-brand-gold text-sm tracking-widest uppercase mt-2">Geschäftsführer</p>
                         </div>
 
                         <!-- Benjamin Tichler -->
-                        <div class="group flex flex-col items-center text-center">
-                            <div class="relative w-56 h-56 mb-6 overflow-hidden bg-gray-50">
-                                <img src="Benjamin-Tichler.jpeg" alt="Benjamin Tichler" class="w-full h-full object-cover object-top grayscale hover:grayscale-0 transition-all duration-500">
-                            </div>
-                            <h5 class="text-xl font-serif text-brand-navy">Benjamin Tichler</h5>
-                            <p class="text-brand-slate font-light mt-1 tracking-wide text-sm">Geschäftsführer</p>
+                        <div class="flex flex-col items-center">
+                            <img src="Benjamin-Tichler.jpeg" alt="Benjamin Tichler" class="w-56 h-56 object-cover object-top rounded-full shadow-lg mb-6 border-4 border-white">
+                            <h4 class="text-2xl font-serif font-bold text-brand-dark">Benjamin Tichler</h4>
+                            <p class="text-brand-gold text-sm tracking-widest uppercase mt-2">Geschäftsführer</p>
                         </div>
                     </div>
                 </div>
 
-                <div class="pt-16 max-w-3xl mx-auto">
-                    <h4 class="text-sm font-semibold text-brand-slate mb-10 uppercase tracking-widest">Stille Partner</h4>
+                <!-- Stille Partner -->
+                <div>
+                    <h3 class="text-xl font-medium text-brand-muted uppercase tracking-widest mb-12">Stille Partner</h3>
                     <div class="flex flex-col md:flex-row justify-center gap-12 md:gap-24">
                         
-                        <!-- 1st: Iacob Tichler -->
-                        <div class="group flex flex-col items-center text-center">
-                            <div class="relative w-40 h-40 mb-5 overflow-hidden bg-gray-50 rounded-full">
-                                <img src="Iacob-Tichler.jpeg" alt="Iacob Tichler" class="w-full h-full object-cover object-top grayscale hover:grayscale-0 transition-all duration-500">
-                            </div>
-                            <h5 class="text-lg font-serif text-brand-navy">Iacob Tichler</h5>
-                            <p class="text-gray-400 font-light mt-1 tracking-wider text-xs uppercase">Partner</p>
+                        <!-- Iacob Tichler (Ordered First among partners) -->
+                        <div class="flex flex-col items-center">
+                            <img src="Iacob-Tichler.jpeg" alt="Iacob Tichler" class="w-48 h-48 object-cover object-top rounded-full shadow-md mb-6 border-4 border-white">
+                            <h4 class="text-xl font-serif font-bold text-brand-dark">Iacob Tichler</h4>
+                            <p class="text-gray-500 text-xs tracking-widest uppercase mt-2">Partner</p>
                         </div>
 
-                        <!-- 2nd: Nicolae-Daniel Petrean -->
-                        <div class="group flex flex-col items-center text-center">
-                            <div class="relative w-40 h-40 mb-5 overflow-hidden bg-gray-50 rounded-full">
-                                <img src="Nicolae-Daniel-Petrean.jpeg" alt="Nicolae-Daniel Petrean" class="w-full h-full object-cover object-top grayscale hover:grayscale-0 transition-all duration-500">
-                            </div>
-                            <h5 class="text-lg font-serif text-brand-navy">Nicolae-Daniel Petrean</h5>
-                            <p class="text-gray-400 font-light mt-1 tracking-wider text-xs uppercase">Partner</p>
+                        <!-- Nicolae-Daniel Petrean (Ordered Second among partners) -->
+                        <div class="flex flex-col items-center">
+                            <img src="Nicolae-Daniel-Petrean.jpeg" alt="Daniel Petrean" class="w-48 h-48 object-cover object-top rounded-full shadow-md mb-6 border-4 border-white">
+                            <h4 class="text-xl font-serif font-bold text-brand-dark">Daniel Petrean</h4>
+                            <p class="text-gray-500 text-xs tracking-widest uppercase mt-2">Partner</p>
                         </div>
-
                     </div>
                 </div>
 
@@ -264,147 +214,113 @@
         </section>
     </main>
 
-    <footer id="contact" class="bg-brand-navy text-slate-300 pt-20 pb-8 border-t border-slate-800">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 mb-16">
+    <footer id="kontakt" class="bg-brand-dark text-white pt-24 pb-10">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16 mb-16 border-b border-white/10 pb-16">
             
-            <!-- Branding -->
             <div>
-                <h3 class="font-serif text-2xl text-white mb-6">IT Immo GmbH</h3>
-                <p class="text-slate-400 text-sm leading-relaxed mb-6 font-light max-w-sm">
-                    Hochwertige Immobilienentwicklung und zukunftsweisende Wohnkonzepte in Österreich. Vertrauen durch Qualität und Transparenz.
+                <h2 class="text-3xl font-serif font-bold tracking-wider uppercase mb-6">IT Immo GmbH</h2>
+                <p class="text-gray-400 font-light leading-relaxed max-w-sm">
+                    Stabilität, Vertrauen und architektonische Exzellenz. Wir entwickeln Immobilien mit bleibendem Wert für Österreich.
                 </p>
             </div>
 
-            <!-- Contact Information -->
-            <div>
-                <h4 class="text-white font-sans uppercase tracking-widest text-xs font-semibold mb-8">Kontakt</h4>
-                <ul class="space-y-4 text-sm font-light">
-                    <li>
-                        <a href="tel:+436706550389" class="hover:text-white transition-colors flex items-center gap-3">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
-                            +43 (670) 6550389
-                        </a>
-                    </li>
-                    <li>
-                        <a href="mailto:contact@it-immo.com" class="hover:text-white transition-colors flex items-center gap-3">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                            contact@it-immo.com
-                        </a>
-                    </li>
-                    <li class="flex items-center gap-3 pt-2">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
-                        Österreich
-                    </li>
-                </ul>
+            <div class="md:text-right">
+                <h3 class="text-lg font-serif font-bold tracking-wider uppercase mb-6 text-brand-gold">Kontakt</h3>
+                <p class="text-gray-300 font-light mb-2">
+                    <a href="tel:+436706550389" class="hover:text-white transition-colors">+43 (670) 6550389</a>
+                </p>
+                <p class="text-gray-300 font-light">
+                    <a href="mailto:contact@it-immo.com" class="hover:text-white transition-colors">contact@it-immo.com</a>
+                </p>
             </div>
+            
         </div>
-        
-        <div class="max-w-7xl mx-auto px-6 border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between text-xs text-slate-500 font-light">
+
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500 font-light">
             <p>&copy; 2026 IT Immo GmbH. Alle Rechte vorbehalten.</p>
             <div class="flex gap-6 mt-4 md:mt-0">
-                <button onclick="openModal('impressum-modal')" class="hover:text-white transition-colors uppercase tracking-widest">Impressum</button>
-                <button onclick="openModal('datenschutz-modal')" class="hover:text-white transition-colors uppercase tracking-widest">Datenschutz</button>
+                <!-- Modal Triggers -->
+                <button onclick="openModal('modal-impressum')" class="hover:text-white transition-colors uppercase tracking-wider text-xs">Impressum</button>
+                <button onclick="openModal('modal-datenschutz')" class="hover:text-white transition-colors uppercase tracking-wider text-xs">Datenschutz</button>
             </div>
         </div>
     </footer>
 
-    
     <!-- Impressum Modal -->
-    <div id="impressum-modal" class="fixed inset-0 z-50 hidden bg-brand-navy/60 backdrop-blur-sm overflow-y-auto w-full h-full" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:p-0">
-            <div class="relative bg-white text-left overflow-hidden shadow-xl sm:my-8 sm:max-w-2xl sm:w-full border border-gray-100">
-                <div class="bg-white px-8 pt-8 pb-10">
-                    <div class="flex justify-between items-start mb-6">
-                        <h3 class="text-2xl font-serif text-brand-navy" id="modal-title">Impressum</h3>
-                        <button onclick="closeModal('impressum-modal')" class="text-gray-400 hover:text-gray-900 transition-colors">
-                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                        </button>
-                    </div>
-                    <div class="mt-2 text-sm text-brand-slate font-light leading-relaxed space-y-4">
-                        <p><strong>IT Immo GmbH</strong><br>
-                        [Ihre Straße / Hausnummer]<br>
-                        [PLZ] [Ort], Österreich</p>
-
-                        <p><strong>Kontakt:</strong><br>
-                        Telefon: +43 (670) 6550389<br>
-                        E-Mail: contact@it-immo.com</p>
-
-                        <p><strong>Vertretungsbefugte Geschäftsführer:</strong><br>
-                        Ioan Singeorzan, Benjamin Tichler</p>
-
-                        <p><strong>Firmenbuchnummer:</strong> FN 123456 x<br>
-                        <strong>Firmenbuchgericht:</strong> [Zuständiges Gericht, z.B. Landesgericht Wels]<br>
-                        <strong>UID-Nummer:</strong> ATU12345678</p>
-
-                        <p><strong>Unternehmensgegenstand:</strong> Immobilienentwicklung und Bauträgergewerbe.</p>
-                        
-                        <p class="text-xs text-gray-400 mt-6">*Bitte ersetzen Sie die Platzhalter in Klammern mit Ihren tatsächlichen Firmenbuchdaten.*</p>
-                    </div>
-                </div>
-                <div class="bg-gray-50 px-8 py-4 flex justify-end">
-                    <button onclick="closeModal('impressum-modal')" class="bg-brand-navy text-white px-6 py-2 text-sm uppercase tracking-widest font-semibold hover:bg-slate-800 transition-colors">Schließen</button>
-                </div>
+    <div id="modal-impressum" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 sm:p-6">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal('modal-impressum')"></div>
+        <div class="relative bg-white text-brand-dark w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-sm p-8 shadow-2xl">
+            <button onclick="closeModal('modal-impressum')" class="absolute top-6 right-6 text-gray-400 hover:text-brand-dark transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <h2 class="text-3xl font-serif font-bold mb-6 border-b pb-4">Impressum</h2>
+            <div class="space-y-4 font-light text-sm leading-relaxed text-gray-700">
+                <p><strong>IT Immo GmbH</strong><br>
+                [Musterstraße 123]<br>
+                [4020 Linz, Österreich]</p>
+                
+                <p><strong>Kontakt:</strong><br>
+                Telefon: +43 (670) 6550389<br>
+                E-Mail: contact@it-immo.com</p>
+                
+                <p><strong>Vertreten durch die Geschäftsführung:</strong><br>
+                Ioan Singeorzan, Benjamin Tichler</p>
+                
+                <p><strong>Registereintrag:</strong><br>
+                Eintragung im Firmenbuch.<br>
+                Firmenbuchnummer: [FN 123456 x]<br>
+                Firmenbuchgericht: [Landesgericht Linz]</p>
+                
+                <p><strong>Umsatzsteuer-ID:</strong><br>
+                Umsatzsteuer-Identifikationsnummer gemäß §27 a Umsatzsteuergesetz:<br>
+                [ATU12345678]</p>
             </div>
         </div>
     </div>
 
     <!-- Datenschutz Modal -->
-    <div id="datenschutz-modal" class="fixed inset-0 z-50 hidden bg-brand-navy/60 backdrop-blur-sm overflow-y-auto w-full h-full" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:p-0">
-            <div class="relative bg-white text-left overflow-hidden shadow-xl sm:my-8 sm:max-w-2xl sm:w-full border border-gray-100">
-                <div class="bg-white px-8 pt-8 pb-10">
-                    <div class="flex justify-between items-start mb-6">
-                        <h3 class="text-2xl font-serif text-brand-navy" id="modal-title">Datenschutzerklärung</h3>
-                        <button onclick="closeModal('datenschutz-modal')" class="text-gray-400 hover:text-gray-900 transition-colors">
-                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" /></svg>
-                        </button>
-                    </div>
-                    <div class="mt-2 text-sm text-brand-slate font-light leading-relaxed space-y-4 max-h-[60vh] overflow-y-auto pr-2">
-                        <p>Der Schutz Ihrer persönlichen Daten ist uns ein besonderes Anliegen. Wir verarbeiten Ihre Daten daher ausschließlich auf Grundlage der gesetzlichen Bestimmungen (DSGVO, TKG 2003).</p>
-                        
-                        <h4 class="font-semibold text-brand-navy mt-4 mb-2">Kontakt mit uns</h4>
-                        <p>Wenn Sie per E-Mail Kontakt mit uns aufnehmen, werden Ihre angegebenen Daten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.</p>
+    <div id="modal-datenschutz" class="fixed inset-0 z-[100] hidden flex items-center justify-center p-4 sm:p-6">
+        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closeModal('modal-datenschutz')"></div>
+        <div class="relative bg-white text-brand-dark w-full max-w-2xl max-h-[85vh] overflow-y-auto rounded-sm p-8 shadow-2xl">
+            <button onclick="closeModal('modal-datenschutz')" class="absolute top-6 right-6 text-gray-400 hover:text-brand-dark transition-colors">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <h2 class="text-3xl font-serif font-bold mb-6 border-b pb-4">Datenschutzerklärung</h2>
+            <div class="space-y-4 font-light text-sm leading-relaxed text-gray-700">
+                <p><strong>1. Datenschutz auf einen Blick</strong><br>
+                Allgemeine Hinweise: Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten passiert, wenn Sie unsere Website besuchen.</p>
+                
+                <p><strong>2. Datenerfassung auf unserer Website</strong><br>
+                Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten können Sie dem Impressum dieser Website entnehmen.</p>
 
-                        <h4 class="font-semibold text-brand-navy mt-4 mb-2">Ihre Rechte</h4>
-                        <p>Ihnen stehen grundsätzlich die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerruf und Widerspruch zu. Wenn Sie glauben, dass die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt, können Sie sich bei der Aufsichtsbehörde beschweren. In Österreich ist dies die Datenschutzbehörde.</p>
-                        
-                        <p><strong>Sie erreichen uns unter folgenden Kontaktdaten:</strong><br>
-                        IT Immo GmbH<br>
-                        contact@it-immo.com</p>
-                    </div>
-                </div>
-                <div class="bg-gray-50 px-8 py-4 flex justify-end">
-                    <button onclick="closeModal('datenschutz-modal')" class="bg-brand-navy text-white px-6 py-2 text-sm uppercase tracking-widest font-semibold hover:bg-slate-800 transition-colors">Schließen</button>
-                </div>
+                <p><strong>3. Hosting (Cloudflare)</strong><br>
+                Wir hosten unsere Website bei Cloudflare. Anbieter ist die Cloudflare, Inc., 101 Townsend St., San Francisco, CA 94107, USA. Wenn Sie unsere Website besuchen, leitet Cloudflare Ihre Anfrage über deren Server, um die Ladezeiten zu optimieren und die Website vor Angriffen zu schützen.</p>
+                
+                <p><strong>4. Ihre Rechte</strong><br>
+                Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung, Sperrung oder Löschung dieser Daten zu verlangen.</p>
             </div>
         </div>
     </div>
 
     <script>
-        function openModal(modalID) {
-            const modal = document.getElementById(modalID);
-            modal.classList.remove('hidden');
-            modal.children[0].children[0].classList.add('fade-in');
-            document.body.classList.add('modal-active');
+        // Modal Control Functions
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.remove('hidden');
+            document.body.classList.add('modal-open'); // Prevents background scrolling
         }
 
-        function closeModal(modalID) {
-            const modal = document.getElementById(modalID);
-            modal.classList.add('hidden');
-            document.body.classList.remove('modal-active');
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+            document.body.classList.remove('modal-open');
         }
 
-        // Close modal when clicking outside of it
-        window.onclick = function(event) {
-            const impressum = document.getElementById('impressum-modal');
-            const datenschutz = document.getElementById('datenschutz-modal');
-            if (event.target === impressum) {
-                closeModal('impressum-modal');
+        // Close modal on escape key press
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeModal('modal-impressum');
+                closeModal('modal-datenschutz');
             }
-            if (event.target === datenschutz) {
-                closeModal('datenschutz-modal');
-            }
-        }
+        });
     </script>
 </body>
 </html>
