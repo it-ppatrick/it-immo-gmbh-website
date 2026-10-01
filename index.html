@@ -93,6 +93,15 @@ a:focus-visible,button:focus-visible { outline:2px solid #a58c65; outline-offset
 @media(max-width:1023px){.projects-grid {grid-template-columns:repeat(2,minmax(0,1fr));}.own-project-copy {padding:30px;}}
 @media(max-width:639px){.projects-grid {grid-template-columns:1fr;gap:24px;}.own-project-link {grid-template-columns:1fr;}.own-project .project-image {min-height:0;aspect-ratio:4/3;}.own-project-copy {padding:26px;}.own-project {margin-bottom:45px;}.project-copy {min-height:0;padding:22px;}.project-units {min-height:0;}.project-view {margin-top:10px;}.project-dialog {width:calc(100% - 16px);max-height:95svh;border-radius:9px;}.project-dialog-header {padding:12px 16px;}.project-dialog-header h2 {font-size:20px;}.gallery-stage>img {height:35svh;min-height:200px;}.gallery-arrow.prev {left:8px;}.gallery-arrow.next {right:8px;}.gallery-caption {padding:10px 16px;}.gallery-thumbs {padding:10px 16px;}.project-detail {padding:23px 20px;}.project-facts {grid-template-columns:1fr;gap:17px;}.project-attribution {font-size:10px;}}
 </style>
+<style>
+.about-section {padding:100px 24px;background:#fff;scroll-margin-top:110px;}
+.about-inner {max-width:1150px;margin:auto;display:grid;grid-template-columns:1fr 1.65fr;gap:70px;}
+.about-title {font-family:Georgia,serif;font-size:42px;line-height:1.2;margin:18px 0 24px;}
+.about-motto {font-family:Georgia,serif;font-size:23px;line-height:1.5;color:#8b7d66;max-width:330px;}
+.about-text p {font-size:15px;line-height:1.9;color:#57534e;margin:0 0 21px;}
+.about-text p:last-child {margin-bottom:0;}
+@media(max-width:767px){.about-section{padding:65px 24px;}.about-inner{grid-template-columns:1fr;gap:30px;}.about-title{font-size:34px;}.about-motto{font-size:21px;max-width:100%;}.about-text p{font-size:14px;}}
+</style>
 </head>
 <body class="bg-brand-light text-brand-dark font-sans antialiased">
 
@@ -102,6 +111,7 @@ a:focus-visible,button:focus-visible { outline:2px solid #a58c65; outline-offset
             <div class="flex justify-between items-center h-20">
                 <a href="#" class="brand-logo" aria-label="IT Immo – Startseite"><svg viewBox="0 0 52 52" fill="none" aria-hidden="true"><path d="M8 44V8h12v36M32 44V8h12M26 8h24M26 44h24" stroke="currentColor" stroke-width="2"/><path d="M4 48h44" stroke="currentColor" stroke-width="1"/></svg><span>IT Immo<small>IMMOBILIENENTWICKLUNG</small></span></a>
                 <div class="desktop-nav hidden md:flex space-x-8 text-sm font-medium tracking-wide uppercase text-gray-500">
+                    <a href="#ueber-uns" class="hover:text-black transition-colors">Über uns</a>
                     <a href="#projekte" class="hover:text-black transition-colors">Projekte</a>
                     <a href="#team" class="hover:text-black transition-colors">Team</a>
                     <a href="#kontakt" class="hover:text-black transition-colors">Kontakt</a>
@@ -110,7 +120,7 @@ a:focus-visible,button:focus-visible { outline:2px solid #a58c65; outline-offset
         </div>
     </nav>
 
-    <div class="mobile-nav" aria-label="Mobile Navigation"><a href="#projekte">Projekte</a><a href="#team">Team</a><a href="#kontakt">Kontakt</a></div>
+    <div class="mobile-nav" aria-label="Mobile Navigation"><a href="#ueber-uns">Über uns</a><a href="#projekte">Projekte</a><a href="#team">Team</a><a href="#kontakt">Kontakt</a></div>
     <!-- Hero Section (Wels Projection) -->
     <section class="hero relative h-screen flex items-center justify-center">
         <!-- Background Image -->
@@ -129,6 +139,22 @@ a:focus-visible,button:focus-visible { outline:2px solid #a58c65; outline-offset
     </section>
 
     <!-- Projects: IT Immo development and prior experience of partners -->
+    <section id="ueber-uns" class="about-section" aria-labelledby="about-title">
+        <div class="about-inner">
+            <div>
+                <span class="section-kicker">ERFAHRUNG. MARKTKENNTNIS. WEITBLICK.</span>
+                <h2 id="about-title" class="about-title">Über uns</h2>
+                <p class="about-motto">Regional verwurzelt.<br>Über den gesamten Projektverlauf erfahren.</p>
+            </div>
+            <div class="about-text">
+                <p>Hinter IT Immo stehen Partner mit Erfahrung in der Entwicklung, Realisierung und Vermarktung von Wohnimmobilien. Unser Schwerpunkt liegt in Oberösterreich. Hier kennen wir den Markt, die regionalen Besonderheiten und die Erwartungen unserer Kunden. Auch darüber hinaus sind wir mit dem österreichischen Immobilienmarkt vertraut.</p>
+                <p>Wir betrachten Immobilien aus mehreren Perspektiven: von der ersten Projektidee über die Planung und Bauausführung bis zum Verkauf. Diese Erfahrung hilft uns, Potenziale realistisch einzuschätzen und Projekte mit Blick auf Qualität, Wirtschaftlichkeit und die Menschen zu entwickeln, die später darin wohnen.</p>
+                <p>Unser Netzwerk umfasst Ansprechpartner bei Banken, Fachplaner und ausführende Unternehmen. Gemeinsam schaffen wir die Grundlage für durchdachte Projekte und eine verlässliche Zusammenarbeit.</p>
+                <p>Die Erfahrung unserer Partner umfasst unterschiedliche Marktphasen – auch die Herausforderungen der Corona-Pandemie. Sie prägt unseren Umgang mit Chancen und Risiken: Wir berücksichtigen Standort, Nachfrage, Baukosten und Finanzierung frühzeitig und beziehen sie in unsere Entscheidungen ein. So verbinden wir regionale Marktkenntnis mit einer vorausschauenden und wirtschaftlich fundierten Projektentwicklung.</p>
+            </div>
+        </div>
+    </section>
+
     <section id="projekte" class="py-24 bg-brand-light">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="text-center mb-16">
